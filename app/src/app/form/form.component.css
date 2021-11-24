@@ -1,0 +1,43 @@
+h3.titleForm {
+    text-align: center;
+    font-size: 3em;
+}
+
+section {
+    margin: 0.5em 1em 1em 1em;
+    text-align: center;
+}
+
+label.editora {
+    padding-right: 10px;
+}
+
+label.autor {
+    padding-right: 24px;
+}
+
+label.preco {
+    padding-right: 20px;
+}
+
+label.nome {
+    padding-right: 20px;
+}
+
+label.isbn {
+    padding-right: 35px;
+}
+
+input {
+    border: 1px solid #555;
+    border-radius: 4px;
+    height: 25px;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+button {
+    width: 10%;
+}

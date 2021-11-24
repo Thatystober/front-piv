@@ -1,0 +1,38 @@
+<h3 class="titleForm">Adicione o seu Livro Aqui:</h3>
+
+<section>
+    <div>
+        <label for="isbn" class="isbn">Isbn:</label>
+        <input type="number" [(ngModel)]="livro.isbn" id="isbn">
+        <br />
+    </div>
+    
+    <div>
+        <label for="nome" class="nome">Nome:</label>
+        <input [(ngModel)]="livro.nome" id="nome">
+        <br />
+    </div>
+   
+    <div>
+        <label for="preco" class="preco">Preco:</label>
+        <input type="number" [(ngModel)]="livro.preco" id="preco">
+        <br />
+    </div>
+    
+    <div>
+        <label for="autor" class="autor">Autor:</label>
+        <input [(ngModel)]="livro.autor" id="autor">
+        <br />
+    </div>
+    
+    <div>
+        <label for="editora" class="editora">Editora:</label>
+        <input [(ngModel)]="livro.editora" id="editora">
+        <br />    
+    </div>
+    
+    <button (click)="salvar()" >{{botaoAcao}}</button>
+    <button (click)="cancelar()" >Cancelar</button>
+    
+    <h4>{{mensagem}}</h4>
+</section>

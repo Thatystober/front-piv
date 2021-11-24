@@ -1,0 +1,42 @@
+h3.titleEstante {
+    text-align: center;
+    font-size: 3em;
+}
+
+section {
+    margin: 0.5em 1em 1em 1em;
+    text-align: center;
+}
+
+table {
+    display: inline-block;
+}
+
+.pesquisar {
+    padding-bottom: 2.4em;
+}
+
+th {
+    padding-right: 20px;
+}
+
+td.isbn {
+    padding-left: 13px;
+}
+
+td.nome {
+    padding-left: 36px;
+}
+
+td.preco {
+    padding-left: 34px;
+}
+
+td.autor {
+    padding-left: 40px;
+}
+
+td.editora {
+    padding-left: 43px;
+    padding-right: 54px;
+}

@@ -1,0 +1,30 @@
+<h3 class="titleEstante">{{nomeComponente}}</h3>
+<section>
+    <div class="pesquisar">
+        <label>Pesquisar:</label>
+        <input type="text" [(ngModel)]="livroPesquisado"> 
+        <br />
+    </div>
+
+    <table *ngIf="livros.length > 0">
+        <tr class="indice">
+            <th>Isbn</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Autor</th>
+            <th>Editora</th>
+            <th>AÇÃO</th>
+        </tr>
+        <br/>
+        <tr *ngFor="let livro of livros | filtro:livroPesquisado" class="result">
+            <td class="isbn">{{livro.isbn}}</td>
+            <td class="nome">{{livro.nome}}</td>
+            <td class="preco">{{livro.preco}}</td>
+            <td class="autor">{{livro.autor}}</td>
+            <td class="editora">{{livro.editora}}</td>
+            <td><a routerLink="/edit/{{livro.isbn}}">Editar</a></td>
+             <!-- <td><a routerLink="[/edit,{{prod.id}}]">Editar</a></td> -->
+            <td><a [routerLink]="" (click)="deletar(livro.isbn)">Deletar</a></td>
+        </tr> 
+    </table>
+</section>
