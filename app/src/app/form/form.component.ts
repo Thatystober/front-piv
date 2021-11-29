@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from '../livro';
-import { LivroService } from '../livro.service';
+import { LivroApiService } from '../livro-api.service';
 
 @Component({
   selector: 'app-form',
@@ -14,33 +14,37 @@ export class FormComponent implements OnInit {
   botaoAcao = 'Cadastrar';
   mensagem = "";
 
-  constructor(private LivroService: LivroService,
+  constructor(private LivroApiService: LivroApiService,
     private route: ActivatedRoute, 
     private router: Router) { }
 
     ngOnInit(): void {
-      this.isbn = +this.route.snapshot.params['isbn'];
+      this.isbn = this.route.snapshot.params['isbn'];
       this.mensagem = "";
       if(this.isbn) {
         this.botaoAcao = "Editar";
-        this.livro = Object.assign({}, 
-            this.LivroService.buscarPorIsbn(this.isbn));
+        this.LivroApiService.buscarPorId(this.isbn).subscribe(res => {
+          this.livro = res;
+        })
       }    
     }  
-
+    
   salvar() {
     if(!this.isbn){
-      this.LivroService.addLivro(this.livro);
-      this.mensagem = this.livro.nome + " cadastrado à estante com sucesso!";
-      this.livro = new Livro();
+      this.LivroApiService.inserir(this.livro).subscribe(res => {
+        this.mensagem = `${res.nome}` + " cadastrado à estante com sucesso!";
+        this.livro = new Livro();
+      })
     }else{
-      this.LivroService.editarLivro(this.isbn, this.livro);
-      this.mensagem = this.livro.nome + " editado com sucesso!";
+      this.LivroApiService.editar(this.isbn, this.livro).subscribe(res =>{
+        this.mensagem = `${res.nome}` + " editado com sucesso!";
+        this.livro = res;
+      })
     }
   }
 
   cancelar(){
-    this.router.navigate(['/tabela'])
+    this.router.navigate(['/estante'])
   }
 
 }

@@ -19,7 +19,7 @@
         <tr *ngFor="let livro of livros | filtro:livroPesquisado" class="result">
             <td class="isbn">{{livro.isbn}}</td>
             <td class="nome">{{livro.nome}}</td>
-            <td class="preco">{{livro.preco}}</td>
+            <td class="preco">{{livro.preco | moeda}}</td>
             <td class="autor">{{livro.autor}}</td>
             <td class="editora">{{livro.editora}}</td>
             <td><a routerLink="/edit/{{livro.isbn}}">Editar</a></td>
