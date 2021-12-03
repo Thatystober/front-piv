@@ -22,9 +22,8 @@
             <td class="preco">{{livro.preco | moeda}}</td>
             <td class="autor">{{livro.autor}}</td>
             <td class="editora">{{livro.editora}}</td>
-            <td><a routerLink="/edit/{{livro.isbn}}">Editar</a></td>
-             <!-- <td><a routerLink="[/edit,{{prod.id}}]">Editar</a></td> -->
-            <td><a [routerLink]="" (click)="deletar(livro.isbn)">Deletar</a></td>
+            <td><a routerLink="/edit/{{livro._id}}">Editar</a></td>
+            <td><a [routerLink]="" (click)="deletar(livro._id)">Deletar</a></td>
         </tr> 
     </table>
 </section>

@@ -6,7 +6,7 @@ import { LivrosComponent } from './livros/livros.component';
 const routes: Routes = [
   { path: 'estante', component: LivrosComponent },
   { path: 'form', component: FormComponent },
-  { path: 'edit/:isbn', component: FormComponent },
+  { path: 'edit/:id', component: FormComponent },
   { path: '', redirectTo: 'tabela', pathMatch: 'full'}
 ];
 

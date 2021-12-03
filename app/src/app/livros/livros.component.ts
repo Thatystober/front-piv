@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges  } from '@angular/core';
 import { Livro } from '../livro';
 import { LivroApiService } from '../livro-api.service';
+import { LivroService } from '../livro.service';
 
 @Component({
   selector: 'app-livros',
@@ -21,13 +22,14 @@ export class LivrosComponent implements OnInit {
 
   listar() {
     this.LivroApiService.getLivros().subscribe(
-      data => (
-        this.livros = data
-      )
+      data => {
+        this.livros = data;
+        console.log(this.livros);
+      }
     )
   }
 
-  deletar(id: number): void {
+  deletar(id: string): void {
     this.LivroApiService.deletar(id).subscribe(res =>{
       this.listar();
       console.log(res);

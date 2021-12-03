@@ -6,7 +6,7 @@ import { Livro } from './livro';
 })
 export class LivroService {
   estante: Livro[] = [ 
-    {isbn: 1, nome: "Livro1", preco: 20.00, autor: "Thaty", editora: "Ls"}
+    {_id: "1", isbn: 1, nome: "Livro1", preco: 20.00, autor: "Thaty", editora: "Ls"}
     ];
 
   constructor() { }
@@ -19,26 +19,26 @@ export class LivroService {
     return this.estante;    
   }  
 
-  buscarPorIsbn(isbn:number){
-    const livro = this.estante.find(livro => livro.isbn === isbn);
+  buscarPorIsbn(id:string){
+    const livro = this.estante.find(livro => livro._id === id);
     return livro ?livro: new Livro();
   }
 
-  editarLivro(isbn:number, livro: Livro){
-    const index = this.getIsbn(isbn);
+  editarLivro(id:string, livro: Livro){
+    const index = this.getIsbn(id);
     if(index >= 0){
       this.estante[index] = livro;
     }
   }
 
-  deletarLivro(isbn:number){
-    const index = this.getIsbn(isbn);
+  deletarLivro(id:string){
+    const index = this.getIsbn(id);
     if(index >= 0){
       this.estante.splice(index, 1);
     }
   }
 
-  private getIsbn(isbn:number){
-    return this.estante.findIndex(livro => livro.isbn === isbn);
+  private getIsbn(id:string){
+    return this.estante.findIndex(livro => livro._id === id);
   }
 }

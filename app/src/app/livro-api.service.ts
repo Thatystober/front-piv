@@ -26,20 +26,18 @@ export class LivroApiService {
     return this.http.post<Livro>(apiUri, livro, httpOtions);
   }
 
-  buscarPorId(isbn: number): Observable<Livro>{
-    const uri = `${apiUri}/${isbn}`;
+  buscarPorIsbn(id: string): Observable<Livro>{
+    const uri = `${apiUri}/localizar?id=${id}`;
     return this.http.get<Livro>(uri);
   }
 
-  editar(isbn: number, livro: Livro): Observable<Livro>{
-    const uri = `${apiUri}/${isbn}`;
+  editar(id: string, livro: Livro): Observable<Livro>{
+    const uri = `${apiUri}/${id}`;
     return this.http.put<Livro>(uri, livro, httpOtions);
   }
 
-  deletar(id: number){
+  deletar(id: string){
     const uri = `${apiUri}/${id}`;
     return this.http.delete(uri);
   }
-
-  
 }

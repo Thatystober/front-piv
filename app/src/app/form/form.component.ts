@@ -8,9 +8,10 @@ import { LivroApiService } from '../livro-api.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
+
 export class FormComponent implements OnInit {
   livro: Livro = new Livro();
-  isbn!: number;
+  id!: string;
   botaoAcao = 'Cadastrar';
   mensagem = "";
 
@@ -19,24 +20,25 @@ export class FormComponent implements OnInit {
     private router: Router) { }
 
     ngOnInit(): void {
-      this.isbn = this.route.snapshot.params['isbn'];
+      this.id = this.route.snapshot.params['id'];
       this.mensagem = "";
-      if(this.isbn) {
+      if(this.id) {
         this.botaoAcao = "Editar";
-        this.LivroApiService.buscarPorId(this.isbn).subscribe(res => {
+        this.LivroApiService.buscarPorIsbn(this.id).subscribe(res => {
           this.livro = res;
+          console.log(this.livro);
         })
       }    
     }  
     
   salvar() {
-    if(!this.isbn){
+    if(!this.id){
       this.LivroApiService.inserir(this.livro).subscribe(res => {
         this.mensagem = `${res.nome}` + " cadastrado à estante com sucesso!";
         this.livro = new Livro();
       })
     }else{
-      this.LivroApiService.editar(this.isbn, this.livro).subscribe(res =>{
+      this.LivroApiService.editar(this.id, this.livro).subscribe(res =>{
         this.mensagem = `${res.nome}` + " editado com sucesso!";
         this.livro = res;
       })
